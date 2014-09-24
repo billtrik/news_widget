@@ -4,9 +4,11 @@ SPA to view news from Yahoo Pipes
 
 ## Details
 
-The dist files are inside ./public
+The widget zip file is created inside ./dist
 
-A server to serve the application is supplied. Details below.
+The SPA's root is inside ./public. A server to serve the application is supplied
+
+The project must be build, as described below, before both are accessible.
 
 ## Setup
 

@@ -1,0 +1,11 @@
+<widget id="http://backbase.org/news_widget" dockable="true">
+  <widgetname>News Widget</widgetname>
+  <icon>img/widget_icon.png</icon>
+  <width>400</width>
+  <height>400</height>
+  <security>
+    <access>
+      <host>pipes.yahoo.com</host>
+    </access>
+  </security>
+</widget>

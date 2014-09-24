@@ -14,6 +14,7 @@
     "type": "git",
     "url": ""
   },
+  "main": "dist/widget.zip",
   "dependencies": {
     "bower": "^1.3.10",
     "coffee-script": "^1.7.1",
@@ -23,6 +24,7 @@
     "grunt-cli": "^0.1.13",
     "grunt-contrib-clean": "^0.5.0",
     "grunt-contrib-coffee": "^0.10.1",
+    "grunt-contrib-compress": "^0.12.0",
     "grunt-contrib-copy": "^0.5.0",
     "grunt-contrib-sass": "^0.8.1",
     "grunt-contrib-uglify": "^0.6.0",

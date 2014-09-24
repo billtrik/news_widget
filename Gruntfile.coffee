@@ -2,6 +2,15 @@ module.exports = (grunt) ->
   grunt.initConfig
     pkg: grunt.file.readJSON('package.json')
 
+    compress:
+      widget:
+        options:
+          mode: 'zip'
+          archive: 'dist/widget.zip'
+        expand: true,
+        cwd: 'public/'
+        src: ['**/*']
+
     uglify:
       options:
         mangle: false,
@@ -91,7 +100,8 @@ module.exports = (grunt) ->
           'public/css'
           'public/js'
           'public/fonts'
-          'compiled/**/*'
+          'compiled'
+          'dist'
         ]
 
   require('load-grunt-tasks') grunt
@@ -107,11 +117,16 @@ module.exports = (grunt) ->
     'uglify'
   ]
 
+  grunt.registerTask 'create_widget', [
+    'compress:widget'
+  ]
+
   grunt.registerTask 'build', [
     'bower:install'
     'copy'
     'build_scss'
     'build_coffee'
+    'create_widget'
   ]
 
   grunt.registerTask 'default', [
