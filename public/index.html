@@ -31,6 +31,23 @@
       </div>
     </script>
 
+    <script type="text/x-handlebars" data-template-name="stories">
+      <ul id="news_list">
+      {{#each itemController="story"}}
+        <li {{bind-attr class="className"}}>
+          {{#if img_link}}
+          <img {{bind-attr src="img_link"}}>
+          {{/if}}
+          <h2 {{action "toggle" on="click"}}>{{title}}</h2>
+          <div class="details">
+            <p class='date'>{{formattedDate}}</p>
+            <p>{{summary}}</p>
+            <a target="_blank" {{bind-attr href="link"}}>Read the rest of the story..</a>
+          </div>
+        </li>
+      {{/each}}
+      </ul>
+    </script>
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="js/vendor/jquery.js"><\/script>')</script>
