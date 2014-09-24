@@ -9,6 +9,8 @@ Widget.IndexRoute = Ember.Route.extend
 
 Widget.StoriesRoute = Ember.Route.extend
   model: -> Widget.Story.all()
+  afterModel: ->
+    $('#loader').fadeOut()
 
 Widget.Story = Ember.Object.extend()
 Widget.Story.reopenClass
