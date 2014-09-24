@@ -41,3 +41,9 @@ Widget.StoryController = Ember.ObjectController.extend
 
   formattedDate: (-> moment(@get('date')).fromNow()
   ).property('date')
+
+Ember.Handlebars.registerBoundHelper 'strip_tags', (txt)->
+  script_stripped = new Handlebars.SafeString(txt).string
+  div = document.createElement('div')
+  div.innerHTML = script_stripped
+  div.innerText
