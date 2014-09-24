@@ -1,0 +1,1 @@
+window.Widget = Ember.Application.create()
