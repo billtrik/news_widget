@@ -2,6 +2,19 @@ module.exports = (grunt) ->
   grunt.initConfig
     pkg: grunt.file.readJSON('package.json')
 
+    uglify:
+      options:
+        mangle: false,
+        preserveComments: false,
+        report: "min",
+        compress:
+          hoist_funs: false,
+          loops: false,
+          unused: false
+      applications:
+        files:
+         'public/js/application.min.js': 'public/js/application.js'
+
     watch:
       coffee:
         files: ['coffee/**/*.coffee']
@@ -29,11 +42,17 @@ module.exports = (grunt) ->
         ext: '.js'
 
     sass:
-      website:
+      expanded:
         options:
           style: 'expanded'
         src: 'scss/website.scss'
         dest: 'public/css/website.css'
+
+      compressed:
+        options:
+          style: 'compressed'
+        src: 'scss/website.scss'
+        dest: 'public/css/website.min.css'
 
     bower:
       install:
@@ -58,12 +77,11 @@ module.exports = (grunt) ->
         flatten: true
         cwd: 'bower_components'
         src: [
-          'bootstrap/dist/js/bootstrap.js'
-          'jquery/dist/jquery.js'
-          'html5shiv/dist/html5shiv.js'
-          'handlebars/handlebars.js'
-          'ember/ember.js'
-          'momentjs/moment.js'
+          'jquery/dist/jquery.min.js'
+          'html5shiv/dist/html5shiv.min.js'
+          'handlebars/handlebars.min.js'
+          'ember/ember.min.js'
+          'momentjs/min/moment.min.js'
         ]
         dest: 'public/js/vendor/'
 
@@ -84,7 +102,10 @@ module.exports = (grunt) ->
 
   grunt.registerTask 'build_scss', ['sass']
 
-  grunt.registerTask 'build_coffee', ['coffee']
+  grunt.registerTask 'build_coffee', [
+    'coffee'
+    'uglify'
+  ]
 
   grunt.registerTask 'build', [
     'bower:install'
