@@ -1,0 +1,13 @@
+{
+  "name": "NewsWidget",
+  "version": "0.0.1",
+  "authors": "Bill Trikalinos <billtrik@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "jquery": "~2.1.1",
+    "bootstrap": "~3.2.0",
+    "ember": "~1.7.0",
+    "html5shiv": "~3.7.2",
+    "momentjs": "~2.8.3"
+  }
+}
