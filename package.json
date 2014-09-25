@@ -17,13 +17,11 @@
   "main": "dist/widget.zip",
   "dependencies": {
     "bower": "^1.3.10",
-    "coffee-script": "^1.7.1",
     "express": "^4.9.0",
     "grunt": "^0.4.5",
     "grunt-bower-task": "^0.4.0",
     "grunt-cli": "^0.1.13",
     "grunt-contrib-clean": "^0.5.0",
-    "grunt-contrib-coffee": "^0.10.1",
     "grunt-contrib-compress": "^0.12.0",
     "grunt-contrib-copy": "^0.5.0",
     "grunt-contrib-sass": "^0.8.1",
