@@ -30,9 +30,9 @@ module.exports = function(grunt) {
       }
     },
     watch: {
-      coffee: {
-        files: ['coffee/**/*.coffee'],
-        tasks: ['newer:coffee']
+      js: {
+        files: ['js/**/*.js'],
+        tasks: ['build_js']
       },
       scss: {
         files: ['scss/**/*.scss'],
@@ -43,18 +43,6 @@ module.exports = function(grunt) {
           livereload: true
         },
         files: ['public/js/**/*.js', 'public/css/**/*.css', 'public/index.html']
-      }
-    },
-    coffee: {
-      options: {
-        bare: true
-      },
-      src: {
-        expand: true,
-        cwd: 'coffee',
-        src: ['**/*.coffee'],
-        dest: 'public/js',
-        ext: '.js'
       }
     },
     sass: {
@@ -84,6 +72,11 @@ module.exports = function(grunt) {
       }
     },
     copy: {
+      src: {
+        files: {
+          'public/js/application.js': 'js/application.js'
+        }
+      },
       bootstrap_css: {
         files: {
           'scss/bootstrap.scss': 'bower_components/bootstrap/dist/css/bootstrap.css',
@@ -110,14 +103,29 @@ module.exports = function(grunt) {
       }
     }
   });
+
   require('load-grunt-tasks')(grunt);
+
   grunt.registerTask('start_web_server', function() {
     grunt.log.writeln('Started web server on port 3000');
-    return require('./server').listen(3000);
+    require('./server').listen(3000);
   });
+
   grunt.registerTask('build_scss', ['sass']);
-  grunt.registerTask('build_coffee', ['coffee', 'uglify']);
+
+  grunt.registerTask('build_js', [
+    'copy:src',
+    'uglify'
+  ]);
+
   grunt.registerTask('create_widget', ['compress:widget']);
-  grunt.registerTask('build', ['bower:install', 'copy', 'build_scss', 'build_coffee', 'create_widget']);
-  return grunt.registerTask('default', ['start_web_server', 'watch']);
+
+  grunt.registerTask('build', [
+    'bower:install',
+    'copy',
+    'build_js',
+    'build_scss',
+    'create_widget'
+  ]);
+  grunt.registerTask('default', ['start_web_server', 'watch']);
 };

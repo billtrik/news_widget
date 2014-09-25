@@ -1,12 +1,12 @@
 window.Widget = Ember.Application.create();
 
 Widget.Router.map(function() {
-  return this.resource('stories');
+  this.resource('stories');
 });
 
 Widget.IndexRoute = Ember.Route.extend({
   redirect: function() {
-    return this.transitionTo('stories');
+    this.transitionTo('stories');
   }
 });
 
@@ -15,7 +15,7 @@ Widget.StoriesRoute = Ember.Route.extend({
     return Widget.Story.all();
   },
   afterModel: function() {
-    return $('#loader').fadeOut();
+    $('#loader').fadeOut();
   }
 });
 
@@ -53,7 +53,7 @@ Widget.Story.reopenClass({
 Widget.StoryController = Ember.ObjectController.extend({
   actions: {
     toggle: function() {
-      return this.set('isToggled', !this.get('isToggled'));
+      this.set('isToggled', !this.get('isToggled'));
     }
   },
   isToggled: false,
